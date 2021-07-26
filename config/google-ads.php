@@ -1,8 +1,19 @@
 <?php
 
-// config for lucasgiovanny/ClassName
 return [
-    'client-secret' => '',
-    'client-id' => '',
-    'refresh-token' => '',
+
+    /*
+    |--------------------------------------------------------------------------
+    | GoogleAds configuration
+    |--------------------------------------------------------------------------
+    |
+    | Google Ads API definition
+    |
+    */
+
+    'client-id' => env('GOOGLEADS_CLIENT_ID'),
+
+    'client-secret' => env('GOOGLEADS_CLIENT_SECRET'),
+
+    'refresh-token' => env('GOOGLEADS_REFRESH_TOKEN'),
 ];
