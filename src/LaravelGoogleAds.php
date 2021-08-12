@@ -6,7 +6,6 @@ use Exception;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\RequestOptions;
 
-
 class LaravelGoogleAds
 {
     /**
@@ -91,8 +90,8 @@ class LaravelGoogleAds
      */
     protected array $headers = [
         'Content-Type' => 'application/json',
-        'developer-token' => null,
-        'login-customer-id' => null,
+        'developer-token' => config('google-ads.developer-token'),
+        'login-customer-id' => config('google-ads.default-account'),
     ];
 
     /**
@@ -113,7 +112,7 @@ class LaravelGoogleAds
      *
      * @return $this
      */
-    public function select(string | array $fields):self
+    public function select(string | array $fields): self
     {
         $this->fields = is_array($fields) ? $fields : [$fields];
 
@@ -127,7 +126,7 @@ class LaravelGoogleAds
      *
      * @return $this
      */
-    public function account(string $account):self
+    public function account(string $account): self
     {
         $this->account = \Illuminate\Support\Str::remove("-", $account);
 
@@ -141,7 +140,7 @@ class LaravelGoogleAds
      *
      * @return $this
      */
-    public function from(string $resource):self
+    public function from(string $resource): self
     {
         $this->resource = $resource;
 
@@ -159,7 +158,7 @@ class LaravelGoogleAds
      *
      * @throws Exception
      */
-    public function where(string $field, string $operatorOrValue, mixed $value = null):self
+    public function where(string $field, string $operatorOrValue, mixed $value = null): self
     {
         $operator = $value ? $operatorOrValue : '=';
 
@@ -195,7 +194,7 @@ class LaravelGoogleAds
     /**
      * @return string
      */
-    protected function query():string
+    protected function query(): string
     {
         $query = "SELECT ";
         $query .= implode(",", $this->fields);
