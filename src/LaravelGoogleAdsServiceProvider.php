@@ -2,7 +2,6 @@
 
 namespace lucasgiovanny\LaravelGoogleAds;
 
-use lucasgiovanny\LaravelGoogleAds\Commands\LaravelGoogleAdsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 

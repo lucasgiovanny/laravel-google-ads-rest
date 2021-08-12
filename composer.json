@@ -31,8 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "lucasgiovanny\\LaravelGoogleAds\\": "src",
-            "lucasgiovanny\\LaravelGoogleAds\\Database\\Factories\\": "database/factories"
+            "lucasgiovanny\\LaravelGoogleAds\\": "src"
         }
     },
     "autoload-dev": {
@@ -52,10 +51,7 @@
         "laravel": {
             "providers": [
                 "lucasgiovanny\\LaravelGoogleAds\\LaravelGoogleAdsServiceProvider"
-            ],
-            "aliases": {
-                "LaravelGoogleAds": "lucasgiovanny\\LaravelGoogleAds\\LaravelGoogleAdsFacade"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
