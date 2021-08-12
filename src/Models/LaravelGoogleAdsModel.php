@@ -1,6 +1,6 @@
 <?php
 
-namespace lucasgiovanny\LaravelGoogleAds\Modes;
+namespace lucasgiovanny\LaravelGoogleAds\Models;
 
 class LaravelGoogleAdsModel
 {
@@ -8,7 +8,7 @@ class LaravelGoogleAdsModel
      * Construct the resource model with attributes
      *
      * @param string $resource
-     * @param array  $attributes
+     * @param array|null  $attributes
      *
      * @return void
      */
@@ -21,7 +21,7 @@ class LaravelGoogleAdsModel
      *
      * @param string $name
      *
-     * @return void
+     * @return mixed
      */
     public function __get(string $name)
     {

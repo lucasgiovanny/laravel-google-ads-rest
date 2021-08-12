@@ -17,9 +17,6 @@ class LaravelGoogleAdsServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-google-ads')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-google-ads_table')
-            ->hasCommand(LaravelGoogleAdsCommand::class);
+            ->hasConfigFile();
     }
 }

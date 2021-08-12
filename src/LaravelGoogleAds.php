@@ -6,16 +6,32 @@ use Exception;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\RequestOptions;
 
+
 class LaravelGoogleAds
 {
-    protected $apiURL = "https://googleads.googleapis.com/";
+    /**
+     * @var string
+     */
+    protected string $apiURL = "https://googleads.googleapis.com/";
 
-    protected $apiVersion = "v8";
+    /**
+     * @var string
+     */
+    protected string $apiVersion = "v8";
 
-    protected $account;
+    /**
+     * @var string
+     */
+    protected string $account;
 
+    /**
+     * @var
+     */
     protected $fields;
 
+    /**
+     * @var
+     */
     protected $wheres;
 
     /**
@@ -25,6 +41,9 @@ class LaravelGoogleAds
      */
     public $resource;
 
+    /**
+     * Possible where operations from Google Ads syntax.
+     */
     public const WHERE_OPERATORS = [
         '=',
         '!=',
@@ -47,6 +66,9 @@ class LaravelGoogleAds
         'NOT REGEXP_MATCH',
     ];
 
+    /**
+     *
+     */
     public const FUNCTIONS = [
         'LAST_14_DAYS',
         'LAST_30_DAYS',
@@ -67,7 +89,7 @@ class LaravelGoogleAds
      *
      * @var array
      */
-    protected $headers = [
+    protected array $headers = [
         'Content-Type' => 'application/json',
         'developer-token' => null,
         'login-customer-id' => null,
@@ -91,7 +113,7 @@ class LaravelGoogleAds
      *
      * @return $this
      */
-    public function select(string | array $fields)
+    public function select(string | array $fields):self
     {
         $this->fields = is_array($fields) ? $fields : [$fields];
 
@@ -101,13 +123,13 @@ class LaravelGoogleAds
     /**
      * Set the resource to be used
      *
-     * @param string $resource
+     * @param string $account
      *
      * @return $this
      */
-    public function account(string $account)
+    public function account(string $account):self
     {
-        $this->account = str_replace("-", "", $account);
+        $this->account = \Illuminate\Support\Str::remove("-", $account);
 
         return $this;
     }
@@ -119,7 +141,7 @@ class LaravelGoogleAds
      *
      * @return $this
      */
-    public function from(string $resource)
+    public function from(string $resource):self
     {
         $this->resource = $resource;
 
@@ -129,13 +151,15 @@ class LaravelGoogleAds
     /**
      * Add a filter to the web service call
      *
-     * @param string       $field
-     * @param string       $operatorOrValue
-     * @param string|array $value
+     * @param  string  $field
+     * @param  string  $operatorOrValue
+     * @param  mixed  $value
      *
      * @return $this
+     *
+     * @throws Exception
      */
-    public function where(string $field, string $operatorOrValue, $value = null)
+    public function where(string $field, string $operatorOrValue, mixed $value = null):self
     {
         $operator = $value ? $operatorOrValue : '=';
 
@@ -168,7 +192,10 @@ class LaravelGoogleAds
         return $this->call();
     }
 
-    protected function query()
+    /**
+     * @return string
+     */
+    protected function query():string
     {
         $query = "SELECT ";
         $query .= implode(",", $this->fields);
@@ -185,6 +212,11 @@ class LaravelGoogleAds
         return $query;
     }
 
+    /**
+     * @return string|null
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     protected function token()
     {
         $url = "https://www.googleapis.com/oauth2/v3/token";
