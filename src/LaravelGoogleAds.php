@@ -90,8 +90,6 @@ class LaravelGoogleAds
      */
     protected array $headers = [
         'Content-Type' => 'application/json',
-        'developer-token' => config('google-ads.developer-token'),
-        'login-customer-id' => config('google-ads.default-account'),
     ];
 
     /**
@@ -251,7 +249,9 @@ class LaravelGoogleAds
                 RequestOptions::HEADERS => array_merge(
                     $this->headers,
                     [
-                    'Authorization' => "Bearer ".$this->token(),
+                        'developer-token' => config('google-ads.developer-token'),
+                        'login-customer-id' => config('google-ads.default-account'),
+                        'Authorization' => "Bearer ".$this->token(),
                     ]
                 ),
                 RequestOptions::BODY => json_encode(['query' => $this->query()]),
