@@ -5,6 +5,7 @@ namespace lucasgiovanny\LaravelGoogleAds;
 use Exception;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\RequestOptions;
+use lucasgiovanny\LaravelGoogleAds\Models\LaravelGoogleAdsModel;
 
 class LaravelGoogleAds
 {
@@ -258,6 +259,12 @@ class LaravelGoogleAds
             ]
         );
 
-        return $res->getBody() ? json_decode($res->getBody(), true)[0]['results'] : null;
+        $results = $res->getBody() ? json_decode($res->getBody(), true)[0]['results'] : null;
+
+        foreach ($results as $result) {
+            $return[] = new LaravelGoogleAdsModel($this->resource, array_merge($result[$this->resource], ['metrics' => $result['metrics']]));
+        }
+
+        return collect($return ?? []);
     }
 }
