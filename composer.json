@@ -1,12 +1,13 @@
 {
-    "name": "lucasgiovanny/laravel-google-ads",
+    "name": "lucasgiovanny/laravel-google-ads-rest",
     "description": "Use Laravel Google Ads REST API easy",
     "keywords": [
         "lucasgiovanny",
         "laravel",
-        "laravel-google-ads"
+        "laravel-google-ads",
+        "google-ads"
     ],
-    "homepage": "https://github.com/lucasgiovanny/laravel-google-ads",
+    "homepage": "https://github.com/lucasgiovanny/laravel-google-ads-rest",
     "license": "MIT",
     "authors": [
         {

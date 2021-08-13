@@ -2,6 +2,6 @@
 
 All notable changes to `laravel-google-ads` will be documented in this file.
 
-## 1.0.0 - 202X-XX-XX
+<!-- ## 1.0.0 - 202X-XX-XX
 
-- initial release
+- Initial release -->
