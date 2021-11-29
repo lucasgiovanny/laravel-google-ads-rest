@@ -100,8 +100,9 @@ class LaravelGoogleAds
      *
      * @return void
      */
-    public function __construct(protected HttpClient $http)
+    public function __construct()
     {
+        $this->http = new HttpClient;
     }
 
     /**
@@ -202,8 +203,8 @@ class LaravelGoogleAds
         if ($this->wheres) {
             $query .= " WHERE ";
             foreach ($this->wheres as $where) {
-                $query .= $where['field']." ".$where['operator']." ".$where['value'];
-                $query .= end($this->wheres) === $where ? "" : "AND";
+                $query .= $where['field']." ".$where['operator']." ".(string) \Illuminate\Support\Str::of($where['value'])->start('"')->finish('"');
+                $query .= end($this->wheres) === $where ? "" : " AND ";
             }
         }
 
@@ -259,10 +260,10 @@ class LaravelGoogleAds
             ]
         );
 
-        $results = $res->getBody() ? json_decode($res->getBody(), true)[0]['results'] : null;
+        $results = $res->getBody() ? json_decode($res->getBody(), true)[0]['results'] ?? [] : null;
 
         foreach ($results as $result) {
-            $return[] = new LaravelGoogleAdsModel($this->resource, array_merge($result[$this->resource], ['metrics' => $result['metrics'] ?? null]));
+            $return[] = new LaravelGoogleAdsModel($this->resource, array_merge($result[$this->resource] ?? $result, ['metrics' => $result['metrics'] ?? null]));
         }
 
         return collect($return ?? []);
