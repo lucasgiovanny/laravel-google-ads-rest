@@ -203,7 +203,7 @@ class LaravelGoogleAds
         if ($this->wheres) {
             $query .= " WHERE ";
             foreach ($this->wheres as $where) {
-                $query .= $where['field']." ".$where['operator']." ".(string) \Illuminate\Support\Str::of($where['value'])->start('"')->finish('"');
+                $query .= $where['field']." ".$where['operator']." ".$where['value'];
                 $query .= end($this->wheres) === $where ? "" : " AND ";
             }
         }
