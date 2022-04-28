@@ -17,7 +17,7 @@ class LaravelGoogleAds
     /**
      * @var string
      */
-    protected string $apiVersion = "v8";
+    protected string $apiVersion = "v10";
 
     /**
      * @var string
