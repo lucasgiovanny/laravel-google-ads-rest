@@ -1,11 +1,11 @@
 <?php
 
-namespace lucasgiovanny\LaravelGoogleAds;
+namespace LucasGiovanny\LaravelGoogleAds;
 
 use Exception;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\RequestOptions;
-use lucasgiovanny\LaravelGoogleAds\Models\LaravelGoogleAdsModel;
+use LucasGiovanny\LaravelGoogleAds\Models\LaravelGoogleAdsModel;
 
 class LaravelGoogleAds
 {
@@ -17,7 +17,7 @@ class LaravelGoogleAds
     /**
      * @var string
      */
-    protected string $apiVersion = "v10";
+    protected string $apiVersion = "v13";
 
     /**
      * @var string

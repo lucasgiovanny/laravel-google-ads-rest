@@ -1,9 +1,9 @@
 <?php
 
-namespace lucasgiovanny\LaravelGoogleAds\Tests;
+namespace LucasGiovanny\LaravelGoogleAds\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use lucasgiovanny\LaravelGoogleAds\LaravelGoogleAdsServiceProvider;
+use LucasGiovanny\LaravelGoogleAds\LaravelGoogleAdsServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra

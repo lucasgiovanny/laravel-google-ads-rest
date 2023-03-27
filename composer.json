@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "lucasgiovanny\\LaravelGoogleAds\\": "src"
+            "LucasGiovanny\\LaravelGoogleAds\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "lucasgiovanny\\LaravelGoogleAds\\Tests\\": "tests"
+            "LucasGiovanny\\LaravelGoogleAds\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -51,7 +51,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "lucasgiovanny\\LaravelGoogleAds\\LaravelGoogleAdsServiceProvider"
+                "LucasGiovanny\\LaravelGoogleAds\\LaravelGoogleAdsServiceProvider"
             ]
         }
     },

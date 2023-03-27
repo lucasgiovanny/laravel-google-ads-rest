@@ -1,6 +1,6 @@
 <?php
 
-namespace lucasgiovanny\LaravelGoogleAds\Tests;
+namespace LucasGiovanny\LaravelGoogleAds\Tests;
 
 class ExampleTest extends TestCase
 {

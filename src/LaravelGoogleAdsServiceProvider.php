@@ -1,6 +1,6 @@
 <?php
 
-namespace lucasgiovanny\LaravelGoogleAds;
+namespace LucasGiovanny\LaravelGoogleAds;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;

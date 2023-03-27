@@ -1,6 +1,6 @@
 <?php
 
-namespace lucasgiovanny\LaravelGoogleAds\Models;
+namespace LucasGiovanny\LaravelGoogleAds\Models;
 
 class LaravelGoogleAdsModel
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace lucasgiovanny\LaravelGoogleAds\Facades;
+namespace LucasGiovanny\LaravelGoogleAds\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use lucasgiovanny\LaravelGoogleAds\LaravelGoogleAds as GoogleAdsService;
+use LucasGiovanny\LaravelGoogleAds\LaravelGoogleAds as GoogleAdsService;
 
 /**
-* @see lucasgiovanny\LaravelGoogleAds\LaravelGoogleAds
+* @see LucasGiovanny\LaravelGoogleAds\LaravelGoogleAds
 */
 class GoogleAds extends Facade
 {
