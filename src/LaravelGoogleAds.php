@@ -9,29 +9,14 @@ use LucasGiovanny\LaravelGoogleAds\Models\LaravelGoogleAdsModel;
 
 class LaravelGoogleAds
 {
-    /**
-     * @var string
-     */
-    protected string $apiURL = "https://googleads.googleapis.com/";
+    protected string $apiURL = 'https://googleads.googleapis.com/';
 
-    /**
-     * @var string
-     */
-    protected string $apiVersion = "v13";
+    protected string $apiVersion = 'v13';
 
-    /**
-     * @var string
-     */
     protected string $account;
 
-    /**
-     * @var
-     */
     protected $fields;
 
-    /**
-     * @var
-     */
     protected $wheres;
 
     /**
@@ -66,9 +51,6 @@ class LaravelGoogleAds
         'NOT REGEXP_MATCH',
     ];
 
-    /**
-     *
-     */
     public const FUNCTIONS = [
         'LAST_14_DAYS',
         'LAST_30_DAYS',
@@ -86,8 +68,6 @@ class LaravelGoogleAds
 
     /**
      * Headers for request
-     *
-     * @var array
      */
     protected array $headers = [
         'Content-Type' => 'application/json',
@@ -96,8 +76,7 @@ class LaravelGoogleAds
     /**
      * Construct the class with dependencies
      *
-     * @param HttpClient $http
-     *
+     * @param  HttpClient  $http
      * @return void
      */
     public function __construct()
@@ -108,11 +87,10 @@ class LaravelGoogleAds
     /**
      * Set the resource to be used
      *
-     * @param string|array $fields
      *
      * @return $this
      */
-    public function select(string | array $fields): self
+    public function select(string|array $fields): self
     {
         $this->fields = is_array($fields) ? $fields : [$fields];
 
@@ -122,13 +100,12 @@ class LaravelGoogleAds
     /**
      * Set the resource to be used
      *
-     * @param string $account
      *
      * @return $this
      */
     public function account(string $account): self
     {
-        $this->account = \Illuminate\Support\Str::remove("-", $account);
+        $this->account = \Illuminate\Support\Str::remove('-', $account);
 
         return $this;
     }
@@ -136,7 +113,6 @@ class LaravelGoogleAds
     /**
      * Set the resource to be used
      *
-     * @param string $resource
      *
      * @return $this
      */
@@ -150,10 +126,7 @@ class LaravelGoogleAds
     /**
      * Add a filter to the web service call
      *
-     * @param  string  $field
-     * @param  string  $operatorOrValue
      * @param  mixed  $value
-     *
      * @return $this
      *
      * @throws Exception
@@ -185,26 +158,23 @@ class LaravelGoogleAds
     public function get()
     {
         if (! $this->resource || ! $this->fields || ! $this->account) {
-            throw new Exception("Invalid call");
+            throw new Exception('Invalid call');
         }
 
         return $this->call();
     }
 
-    /**
-     * @return string
-     */
     protected function query(): string
     {
-        $query = "SELECT ";
-        $query .= implode(",", $this->fields);
-        $query .= " FROM ".$this->resource;
+        $query = 'SELECT ';
+        $query .= implode(',', $this->fields);
+        $query .= ' FROM '.$this->resource;
 
         if ($this->wheres) {
-            $query .= " WHERE ";
+            $query .= ' WHERE ';
             foreach ($this->wheres as $where) {
-                $query .= $where['field']." ".$where['operator']." ".$where['value'];
-                $query .= end($this->wheres) === $where ? "" : " AND ";
+                $query .= $where['field'].' '.$where['operator'].' '.$where['value'];
+                $query .= end($this->wheres) === $where ? '' : ' AND ';
             }
         }
 
@@ -218,14 +188,14 @@ class LaravelGoogleAds
      */
     protected function token()
     {
-        $url = "https://www.googleapis.com/oauth2/v3/token";
+        $url = 'https://www.googleapis.com/oauth2/v3/token';
 
-        $res = $this->http->request("POST", $url, [
+        $res = $this->http->request('POST', $url, [
             RequestOptions::FORM_PARAMS => [
-                'grant_type' => "refresh_token",
-                'client_secret' => config("google-ads.client-secret"),
-                'client_id' => config("google-ads.client-id"),
-                'refresh_token' => config("google-ads.refresh-token"),
+                'grant_type' => 'refresh_token',
+                'client_secret' => config('google-ads.client-secret'),
+                'client_id' => config('google-ads.client-id'),
+                'refresh_token' => config('google-ads.refresh-token'),
             ],
         ]);
 
@@ -238,14 +208,13 @@ class LaravelGoogleAds
      * Internal method to make the correct request call
      *
      * @return array
-     *
      */
     protected function call()
     {
-        $url = trim($this->apiURL, "/")."/".trim($this->apiVersion, "/")."/customers/".trim($this->account, "/")."/googleAds:searchStream";
+        $url = trim($this->apiURL, '/').'/'.trim($this->apiVersion, '/').'/customers/'.trim($this->account, '/').'/googleAds:searchStream';
 
         $res = $this->http->request(
-            "POST",
+            'POST',
             $url,
             [
                 RequestOptions::HEADERS => array_merge(
@@ -253,7 +222,7 @@ class LaravelGoogleAds
                     [
                         'developer-token' => config('google-ads.developer-token'),
                         'login-customer-id' => config('google-ads.default-account'),
-                        'Authorization' => "Bearer ".$this->token(),
+                        'Authorization' => 'Bearer '.$this->token(),
                     ]
                 ),
                 RequestOptions::BODY => json_encode(['query' => $this->query()]),

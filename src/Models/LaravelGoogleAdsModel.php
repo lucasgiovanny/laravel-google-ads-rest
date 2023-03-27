@@ -7,8 +7,6 @@ class LaravelGoogleAdsModel
     /**
      * Construct the resource model with attributes
      *
-     * @param string $resource
-     * @param array|null  $attributes
      *
      * @return void
      */
@@ -19,7 +17,6 @@ class LaravelGoogleAdsModel
     /**
      * Magic method to return attribute as property
      *
-     * @param string $name
      *
      * @return mixed
      */

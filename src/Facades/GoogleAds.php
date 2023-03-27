@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Facade;
 use LucasGiovanny\LaravelGoogleAds\LaravelGoogleAds as GoogleAdsService;
 
 /**
-* @see LucasGiovanny\LaravelGoogleAds\LaravelGoogleAds
-*/
+ * @see LucasGiovanny\LaravelGoogleAds\LaravelGoogleAds
+ */
 class GoogleAds extends Facade
 {
     /**

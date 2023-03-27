@@ -2,13 +2,11 @@
 
 namespace LucasGiovanny\LaravelGoogleAds\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use LucasGiovanny\LaravelGoogleAds\LaravelGoogleAdsServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
-
     protected function getPackageProviders($app)
     {
         return [
@@ -18,7 +16,6 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-
         /*
         include_once __DIR__.'/../database/migrations/create_laravel-google-ads_table.php.stub';
         (new \CreatePackageTable())->up();
