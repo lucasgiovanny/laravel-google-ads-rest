@@ -7,7 +7,41 @@ This Laravel package provides a convenient and user-friendly way to utilize the 
 
 ## Documentation
 
-Documentation soon
+Laravel Google Ads Rest is a package created by [Lucas Giovanny](https://github.com/lucasgiovanny) that provides a simple and easy-to-use interface for interacting with the Google Ads API using Laravel.
+
+### Installation
+
+To install the package, you can use Composer by running the following command:
+
+```bash
+composer require lucasgiovanny/laravel-google-ads-rest
+```
+
+### Configuration
+
+To use the package, you must configure your credentials on your `.env` file.
+
+```bash
+GOOGLEADS_CLIENT_ID=
+GOOGLEADS_CLIENT_SECRET=
+GOOGLEADS_DEVELOPER_TOKEN=
+GOOGLEADS_REFRESH_TOKEN=
+GOOGLEADS_DEFAULT_ACCOUNT=
+```
+
+### Usage
+
+You can use the package by calling the `GoogleAds` facade.
+
+```php
+use LucasGiovanny\LaravelGoogleAds\Facades\GoogleAds;
+
+GoogleAds::account('ACCOUNT_ID')
+    ->from('ad_group_ad')
+    ->select(['metrics.cost_micros', 'segments.date'])
+    ->where('segments.date', 'BETWEEN', '2023-01-01 AND 2023-01-31')
+    ->get()
+```
 
 ## Changelog
 
