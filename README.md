@@ -1,5 +1,3 @@
-# Laravel Google Ads REST
-
 <img src="art/logo.png" width="500" alt="Laravel Google Ads RES">
 
 Laravel Google Ads Rest is a package created by [Lucas Giovanny](https://github.com/lucasgiovanny) that provides a convenient and user-friendly way to utilize the Google Ads API through a REST protocol. With this package, users can easily integrate their Laravel application with the Google Ads API, without the need for extensive coding or technical expertise. This package simplifies the process of accessing and manipulating data from Google Ads campaigns, making it easier for developers to build powerful applications that leverage the full capabilities of the Google Ads API.
