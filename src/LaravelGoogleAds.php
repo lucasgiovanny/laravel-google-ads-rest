@@ -11,7 +11,7 @@ class LaravelGoogleAds
 {
     protected string $apiURL = 'https://googleads.googleapis.com/';
 
-    protected string $apiVersion = 'v13';
+    protected string $apiVersion = 'v15';
 
     protected string $account;
 
